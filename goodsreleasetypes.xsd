@@ -1,0 +1,120 @@
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="urn:goodsreleasetypes"
+    xmlns:goodsreleasetypes="urn:goodsreleasetypes"
+	targetNamespace="urn:goodsreleasetypes"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+	
+	<xs:simpleType name="DocCodes">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[A-Z0-9]{3,6}"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TaxType">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[A-Z0-9]{3}"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Units">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="([A-Z]{2,5})?"/>			
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TypeOfPackages">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[A-Z]{2}"/>			
+		</xs:restriction>
+	</xs:simpleType>	
+	
+	<xs:simpleType name="Currency">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="([A-Z]{3})?"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="DocBase">
+		<xs:sequence>
+			<xs:element name="type_" type="goodsreleasetypes:DocCodes"/>
+			<xs:element name="referenceNumber" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="docId" type="xs:int"/>
+		<xs:attribute name="sequenceNumber" type="xs:int"/>
+	</xs:complexType>	
+	
+	<xs:complexType name="SuppDocBase">
+		<xs:complexContent>
+			<xs:extension base="goodsreleasetypes:DocBase">
+				<xs:sequence>
+					<xs:element name="dateOfValidity" type="xs:date"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="SuppDocFull">
+		<xs:complexContent>
+			<xs:extension base="goodsreleasetypes:SuppDocBase">
+				<xs:sequence>
+					<xs:element name="measurementUnit" type="goodsreleasetypes:Units"/>
+					<xs:element name="quantity" type="xs:decimal"/>
+					<xs:element name="currency" type="goodsreleasetypes:Currency"/>
+					<xs:element name="amount" type="xs:decimal"/>
+				</xs:sequence>
+				<xs:attribute name="goodsItemNumber" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="GoodsReference">
+			<xs:sequence>
+				<xs:element name="goodsItemNumber" type="xs:int" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="TransportEquipment">
+		<xs:sequence>
+			<xs:element name="containerIdentificationNumber" type="xs:string"/>
+			<xs:element name="goodsReference" type="goodsreleasetypes:GoodsReference"/>
+		</xs:sequence>
+		<xs:attribute name="docId" type="xs:int"/>
+		<xs:attribute name="sequenceNumber" type="xs:int"/>	
+	</xs:complexType>
+	
+	<xs:complexType name="Package">
+		<xs:sequence>
+			<xs:element name="shippingMarks" type="xs:string"/>
+			<xs:element name="typeOfPackages" type="goodsreleasetypes:TypeOfPackages"/>
+			<xs:element name="numberOfPackages" type="xs:int"/>
+		</xs:sequence>
+		<xs:attribute name="docId" type="xs:int"/>
+		<xs:attribute name="goodsItemNumber" type="xs:int"/>
+		<xs:attribute name="sequenceNumber" type="xs:int"/>		
+	</xs:complexType>
+	
+	<xs:complexType name ="TaxBase">
+		<xs:sequence>
+			<xs:element name="taxRate" type="xs:decimal"/>
+			<xs:element name="measurementUnit" type="goodsreleasetypes:Units"/>
+			<xs:element name="quantity" type="xs:decimal"/>
+			<xs:element name="amount" type="xs:decimal"/>
+			<xs:element name="taxAmount" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="DutiesAndTaxesItem">
+		<xs:sequence>
+			<xs:element name="taxType" type="goodsreleasetypes:TaxType"/>
+			<xs:element name="payableTaxAmount" type="xs:decimal"/>
+			<xs:element name="methodOfPayment" type="xs:string"/>
+			<xs:element name="taxBase" type="goodsreleasetypes:TaxBase"/>
+		</xs:sequence>
+			<xs:attribute name="docId" type="xs:int"/>
+			<xs:attribute name="goodsItemNumber" type="xs:int"/>
+			<xs:attribute name="sequenceNumber" type="xs:int"/>
+	</xs:complexType>
+	
+</xs:schema>

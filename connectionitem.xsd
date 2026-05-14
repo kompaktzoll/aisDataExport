@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			targetNamespace="urn:connectionitem"
+			elementFormDefault="qualified"
+			attributeFormDefault="unqualified">
+			
+	<xs:complexType name="KzollConnectionItem">
+		<xs:sequence>
+			<xs:element name="docId" type="xs:int"/>
+			<xs:element name="uniqueInvoiceIdentifier" type="xs:string"/>
+			<xs:element name="invoiceNumber" type="xs:string"/>
+			<xs:element name="invoiceTotalAmount" type="xs:decimal"/>
+			<xs:element name="invoiceCurrency" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

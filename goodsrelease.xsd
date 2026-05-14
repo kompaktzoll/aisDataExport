@@ -1,0 +1,127 @@
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="urn:goodsrelease"
+	xmlns:goodsreleasetypes="urn:goodsreleasetypes"
+    xmlns:goodsrelease="urn:goodsrelease"
+	targetNamespace="urn:goodsrelease"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+	
+	<xs:import namespace="urn:goodsreleasetypes" schemaLocation="goodsreleasetypes.xsd"/>
+	
+	<!-- Ais dokument item type. -->
+	<xs:complexType name="GoodShipmentItem">
+		<xs:sequence>
+			<xs:element name="procedureCode" type="xs:string"/>
+			<xs:element name="commodityCode" type="xs:string"/>
+			<xs:element name="descriptionOfGoods" type="xs:string"/>
+			<xs:element name="qty" type="xs:decimal"/>
+			<xs:element name="unit" type="goodsreleasetypes:Units"/>
+			<xs:element name="supplementaryUnits" type="xs:decimal"/>
+			<xs:element name="netMass" type="xs:decimal"/>
+			<xs:element name="grossMass" type="xs:decimal"/>
+			<xs:element name="itemAmountInvoiced" type="xs:decimal"/>
+			<xs:element name="exchangeRate" type="xs:decimal"/>
+			<xs:element name="statisticalValue" type="xs:decimal"/>
+			<xs:element name="taxInc" type="xs:decimal"/>
+			<xs:element name="vatInc" type="xs:decimal"/>
+			<xs:element name="preference" type="xs:int"/>
+			<xs:element name="countryOfOrigin" type="xs:string"/>
+			<xs:element name="totalDutiesAndTaxesAmount" type="xs:decimal"/>
+			<xs:element name="dutiesAndTaxes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dutiesAndTaxesItem" type="goodsreleasetypes:DutiesAndTaxesItem" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="packaging">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="package" type="goodsreleasetypes:Package" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="supportingDocuments" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="supportingDocument" type="goodsreleasetypes:SuppDocFull" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="previousDocuments" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="previousDocument" type="goodsreleasetypes:DocBase" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="goodsItemNumber" type="xs:int"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="transportDocuments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="transportDocument" type="goodsreleasetypes:DocBase" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="goodsItemNumber" type="xs:int"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="docId" type="xs:int"/>
+		<xs:attribute name="goodsItemNumber" type="xs:int"/>
+	</xs:complexType>
+	
+	<!-- Ais document type. -->
+	<xs:complexType name="GoodsRelease">
+		<xs:sequence>
+			<xs:element name="customsRegistrationNumber" type="xs:string"/>
+			<xs:element name="paymentReferenceNumber" type="xs:string"/>
+			<xs:element name="internalReference" type="xs:string"/>
+			<xs:element name="supplier" type="xs:string"/>
+			<xs:element name="shipFrom" type="xs:string"/>
+			<xs:element name="borderTranspMode" type="xs:string"/>
+			<xs:element name="domesticTranspMode" type="xs:string"/>
+			<xs:element name="incotermsCode" type="xs:string"/>
+			<xs:element name="taxPaymentCode" type="xs:string"/>
+			<xs:element name="vatPaymentCode" type="xs:string"/>
+			<xs:element name="currency" type="goodsreleasetypes:Currency"/>
+			<xs:element name="totalNumberOfPackages" type="xs:int"/>
+			<xs:element name="customsOfficeLodgement" type="xs:string"/>
+			<xs:element name="previousDocuments" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="previousDocument" type="goodsreleasetypes:DocBase" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="transportDocuments" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="transportDocument" type="goodsreleasetypes:DocBase" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="supportingDocuments" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="supportingDocument" type="goodsreleasetypes:SuppDocBase" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="transportEquipments">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="transportEquipment" type="goodsreleasetypes:TransportEquipment" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="goodShipmentItems">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="goodShipmentItem" type="goodsrelease:GoodShipmentItem" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

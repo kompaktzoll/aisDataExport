@@ -1,0 +1,50 @@
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="urn:kzollaisexportdata"
+	xmlns:communicationitem="urn:communicationitem"
+	xmlns:connectionitem="urn:connectionitem"
+    targetNamespace="urn:kzollaisexportdata"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+    <xs:import namespace="urn:communicationitem" schemaLocation="communicationitem.xsd"/>
+    <xs:import namespace="urn:connectionitem" schemaLocation="connectionitem.xsd"/>
+
+    <xs:element name="kzollAisExportData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="createdTime" type="xs:dateTime"/>
+				<xs:element name="aisCommunicationData">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="aisCommunicationItem415" 
+							            type="communicationitem:AisCommunicationItem415" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+                            <xs:element name="aisCommunicationItem416" 
+							            type="communicationitem:AisCommunicationItem416" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+                            <xs:element name="aisCommunicationItem428" 
+							            type="communicationitem:AisCommunicationItem428" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+                            <xs:element name="aisCommunicationItem429" 
+							            type="communicationitem:AisCommunicationItem429" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="kzollConnectionData">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="kzollConnectionItem" type="connectionitem:KzollConnectionItem" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
