@@ -6,6 +6,18 @@
     elementFormDefault="qualified"
     attributeFormDefault="unqualified">
 	
+	<xs:simpleType name="TypeOfEori">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[A-Z]{2}[0-9]{12}"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="TypeOfDeclarationDocument">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[A-Z]{3}"/>			
+		</xs:restriction>
+	</xs:simpleType>	
+	
 	<xs:simpleType name="DocCodes">
 		<xs:restriction base="xs:token">
 			<xs:pattern value="[A-Z0-9]{3,6}"/>			
@@ -35,6 +47,18 @@
 			<xs:pattern value="([A-Z]{3})?"/>			
 		</xs:restriction>
 	</xs:simpleType>
+	
+	<xs:complexType name="TraderType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<xs:element name="country" type="xs:string" minOccurs="0"/>
+			<xs:element name="zip" type="xs:string" minOccurs="0"/>
+			<xs:element name="city" type="xs:string" minOccurs="0"/>
+			<xs:element name="address" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="docId" type="xs:int"/>
+		<xs:attribute name="eori" type="goodsreleasetypes:TypeOfEori"/>
+	</xs:complexType>
 	
 	<xs:complexType name="DocBase">
 		<xs:sequence>

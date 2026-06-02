@@ -17,19 +17,78 @@
 				<xs:element name="aisCommunicationData">
 					<xs:complexType>
 						<xs:sequence>
+						
 							<xs:element name="aisCommunicationItem415" 
-							            type="communicationitem:AisCommunicationItem415" 
+							            type="communicationitem:AisCommunicationSentItem" 
 										minOccurs="0" 
 										maxOccurs="unbounded"/>
-                            <xs:element name="aisCommunicationItem416" 
-							            type="communicationitem:AisCommunicationItem416" 
+										
+                            <xs:element name="aisCommunicationItem416"
+										type="communicationitem:AisCommunicationAnswerItem"
 										minOccurs="0" 
 										maxOccurs="unbounded"/>
-                            <xs:element name="aisCommunicationItem428" 
-							            type="communicationitem:AisCommunicationItem428" 
+                            
+							<xs:element name="aisCommunicationItem428" 
+										type="communicationitem:AisCommunicationAnswerItem"
 										minOccurs="0" 
 										maxOccurs="unbounded"/>
-                            <xs:element name="aisCommunicationItem429" 
+                            
+							<xs:element name="aisCommunicationItem460_1" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+                            
+							<xs:element name="aisCommunicationItem460_2" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>                            
+							
+							<xs:element name="aisCommunicationItem446" 
+										type="communicationitem:AisCommunicationSentItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>										
+							
+							<xs:element name="aisCommunicationItemH02" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>                            
+							
+							<xs:element name="aisCommunicationItemH03" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+							
+							<xs:element name="aisCommunicationItemH04" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+							
+							<xs:element name="aisCommunicationItemH05" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+							
+							<xs:element name="aisCommunicationItemH06" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>										
+							
+							<xs:element name="aisCommunicationItemH09" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>                            
+							
+							<xs:element name="aisCommunicationItemH29" 
+							            type="communicationitem:AisCommunicationAnswerItem" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>                            
+							
+							<xs:element name="aisCommunicationItem413"
+										type="communicationitem:AisCommunicationItem413" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+                            
+							<xs:element name="aisCommunicationItem429" 
 							            type="communicationitem:AisCommunicationItem429" 
 										minOccurs="0" 
 										maxOccurs="unbounded"/>

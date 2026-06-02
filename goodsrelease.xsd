@@ -14,6 +14,8 @@
 		<xs:sequence>
 			<xs:element name="procedureCode" type="xs:string"/>
 			<xs:element name="commodityCode" type="xs:string"/>
+			<xs:element name="taricAdditionalCode" type="xs:string"/>
+			<xs:element name="nationalAdditionalCommodityCode" type="xs:string"/>
 			<xs:element name="descriptionOfGoods" type="xs:string"/>
 			<xs:element name="qty" type="xs:decimal"/>
 			<xs:element name="unit" type="goodsreleasetypes:Units"/>
@@ -22,12 +24,19 @@
 			<xs:element name="grossMass" type="xs:decimal"/>
 			<xs:element name="itemAmountInvoiced" type="xs:decimal"/>
 			<xs:element name="exchangeRate" type="xs:decimal"/>
+			<xs:element name="statisticalValueInc" type="xs:decimal"/>
+			<xs:element name="statisticalValueDec" type="xs:decimal"/>
 			<xs:element name="statisticalValue" type="xs:decimal"/>
 			<xs:element name="taxInc" type="xs:decimal"/>
 			<xs:element name="vatInc" type="xs:decimal"/>
 			<xs:element name="preference" type="xs:int"/>
 			<xs:element name="countryOfOrigin" type="xs:string"/>
+			<xs:element name="countryOfPreferentialOrigin" type="xs:string"/>
+			<xs:element name="outwardProcessingCustomsDebt" type="xs:decimal"/>
+			<xs:element name="outwardProcessingAddedValue" type="xs:decimal"/>
+			<xs:element name="outwardCostOfProcessingOperations" type="xs:decimal"/>
 			<xs:element name="totalDutiesAndTaxesAmount" type="xs:decimal"/>
+			<xs:element name="valuationMethod" type="xs:int"/>
 			<xs:element name="dutiesAndTaxes">
 				<xs:complexType>
 					<xs:sequence>
@@ -73,18 +82,28 @@
 	<!-- Ais document type. -->
 	<xs:complexType name="GoodsRelease">
 		<xs:sequence>
+			<xs:element name="declarationType" type="goodsreleasetypes:TypeOfDeclarationDocument"/>
 			<xs:element name="customsRegistrationNumber" type="xs:string"/>
 			<xs:element name="paymentReferenceNumber" type="xs:string"/>
 			<xs:element name="internalReference" type="xs:string"/>
-			<xs:element name="supplier" type="xs:string"/>
+			<xs:element name="exporter" type="goodsreleasetypes:TraderType"/>
+			<xs:element name="importer" type="goodsreleasetypes:TraderType"/>
+			<xs:element name="declarant" type="goodsreleasetypes:TraderType"/>
+			<xs:element name="representative" type="goodsreleasetypes:TraderType"/>
+			<xs:element name="guarantor" type="goodsreleasetypes:TraderType" minOccurs="0"/>
+			<xs:element name="payer" type="goodsreleasetypes:TraderType" minOccurs="0"/>
 			<xs:element name="shipFrom" type="xs:string"/>
 			<xs:element name="borderTranspMode" type="xs:string"/>
 			<xs:element name="domesticTranspMode" type="xs:string"/>
+			<xs:element name="arrivalTransportIdentificationNumber" type="xs:string"/>
 			<xs:element name="incotermsCode" type="xs:string"/>
+			<xs:element name="incotermsCountry" type="xs:string"/>
+			<xs:element name="incotermsPlace" type="xs:string"/>
 			<xs:element name="taxPaymentCode" type="xs:string"/>
 			<xs:element name="vatPaymentCode" type="xs:string"/>
 			<xs:element name="currency" type="goodsreleasetypes:Currency"/>
 			<xs:element name="totalNumberOfPackages" type="xs:int"/>
+			<xs:element name="totalNumberOfGoodsItems" type="xs:int"/>
 			<xs:element name="customsOfficeLodgement" type="xs:string"/>
 			<xs:element name="previousDocuments" minOccurs="0">
 				<xs:complexType>

@@ -31,34 +31,24 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="AisCommunicationItem415">
+	<xs:complexType name="AisCommunicationSentItem">
         <xs:complexContent>
             <xs:extension base="tns:AisCommunicationBaseItem">
                 <xs:sequence>
-                    <xs:element name="userName" type="xs:string"/>
-					<xs:element name="userNavId" type="tns:UserNavId"/>
+                    <xs:element name="userName" type="xs:string" minOccurs="0"/>
+					<xs:element name="userNavId" type="tns:UserNavId" minOccurs="0"/>
+					<xs:element name="aisMrn" type="tns:MrnType" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
 
-    <xs:complexType name="AisCommunicationItem416">
+	<xs:complexType name="AisCommunicationAnswerItem">
         <xs:complexContent>
             <xs:extension base="tns:AisCommunicationBaseItem">
                 <xs:sequence>
-                    <xs:element name="userName" type="xs:string"/>
-					<xs:element name="userNavId" type="tns:UserNavId"/>
-					<xs:element name="aisErrorMessage" type="xs:string"/>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-
-    <xs:complexType name="AisCommunicationItem428">
-        <xs:complexContent>
-            <xs:extension base="tns:AisCommunicationBaseItem">
-                <xs:sequence>
-                    <xs:element name="aisMrn" type="tns:MrnType" minOccurs="0"/>
+					<xs:element name="aisMrn" type="tns:MrnType" minOccurs="0"/>
+                    <xs:element name="aisMessage" type="xs:string" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -66,14 +56,24 @@
 
     <xs:complexType name="AisCommunicationItem429">
         <xs:complexContent>
-            <xs:extension base="tns:AisCommunicationBaseItem">
+            <xs:extension base="tns:AisCommunicationAnswerItem">
                 <xs:sequence>
-                    <xs:element name="aisMrn" type="tns:MrnType" minOccurs="0"/>
 					<xs:element name="aisReleaseTime" type="xs:dateTime" minOccurs="0"/>
 					<xs:element name="goodsRelease" type="goodsrelease:GoodsRelease"/>
+					<xs:element name="goodsReleaseDocument" type="xs:base64Binary"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
 	
+    <xs:complexType name="AisCommunicationItem413">
+        <xs:complexContent>
+            <xs:extension base="tns:AisCommunicationSentItem">
+                <xs:sequence>
+					<xs:element name="goodsRelease" type="goodsrelease:GoodsRelease"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
 </xs:schema>
