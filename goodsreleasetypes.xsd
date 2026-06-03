@@ -8,43 +8,43 @@
 	
 	<xs:simpleType name="TypeOfEori">
 		<xs:restriction base="xs:token">
-			<xs:pattern value="[A-Z]{2}[0-9]{12}"/>			
+			<xs:pattern value="^[A-Z]{2}[0-9]{8,12}$"/>			
 		</xs:restriction>
 	</xs:simpleType>
 	
 	<xs:simpleType name="TypeOfDeclarationDocument">
 		<xs:restriction base="xs:token">
-			<xs:pattern value="[A-Z]{3}"/>			
+			<xs:pattern value="^[A-Z]{3}$"/>			
 		</xs:restriction>
 	</xs:simpleType>	
 	
 	<xs:simpleType name="DocCodes">
 		<xs:restriction base="xs:token">
-			<xs:pattern value="[A-Z0-9]{3,6}"/>			
+			<xs:pattern value="^[A-Z0-9]{3,6}$"/>			
 		</xs:restriction>
 	</xs:simpleType>
 	
 	<xs:simpleType name="TaxType">
 		<xs:restriction base="xs:token">
-			<xs:pattern value="[A-Z0-9]{3}"/>			
+			<xs:pattern value="^[A-Z][0-9]{2}$"/>			
 		</xs:restriction>
 	</xs:simpleType>
 	
 	<xs:simpleType name="Units">
 		<xs:restriction base="xs:token">
-			<xs:pattern value="([A-Z]{2,5})?"/>			
+			<xs:pattern value="^([A-Z]{2,5})?$"/>			
 		</xs:restriction>
 	</xs:simpleType>
 
 	<xs:simpleType name="TypeOfPackages">
 		<xs:restriction base="xs:token">
-			<xs:pattern value="[A-Z]{2}"/>			
+			<xs:pattern value="^[A-Z]{2}$"/>			
 		</xs:restriction>
 	</xs:simpleType>	
 	
 	<xs:simpleType name="Currency">
 		<xs:restriction base="xs:token">
-			<xs:pattern value="([A-Z]{3})?"/>			
+			<xs:pattern value="^([A-Z]{3})?$"/>			
 		</xs:restriction>
 	</xs:simpleType>
 	
