@@ -50,6 +50,7 @@
 	
 	<xs:complexType name="TraderType">
 		<xs:sequence>
+			<xs:element name="eori" type="goodsreleasetypes:TypeOfEori" minOccurs="0"/>
 			<xs:element name="name" type="xs:string" minOccurs="0"/>
 			<xs:element name="country" type="xs:string" minOccurs="0"/>
 			<xs:element name="zip" type="xs:string" minOccurs="0"/>
@@ -57,7 +58,6 @@
 			<xs:element name="address" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="docId" type="xs:int"/>
-		<xs:attribute name="eori" type="goodsreleasetypes:TypeOfEori"/>
 	</xs:complexType>
 	
 	<xs:complexType name="DocBase">
