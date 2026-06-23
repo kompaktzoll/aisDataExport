@@ -82,7 +82,15 @@
 	<!-- Ais document type. -->
 	<xs:complexType name="GoodsRelease">
 		<xs:sequence>
-			<xs:element name="declarationType" type="goodsreleasetypes:TypeOfDeclarationDocument"/>
+			<xs:element name="importOperation">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name= "declarationType" type="goodsreleasetypes:DeclarationType"/>
+						<xs:element name= "additionalDeclarationType" type="goodsreleasetypes:AdditionalDeclarationType"/>
+						<xs:element name= "msgType" type="goodsreleasetypes:MsgType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="customsRegistrationNumber" type="xs:string"/>
 			<xs:element name="paymentReferenceNumber" type="xs:string"/>
 			<xs:element name="internalReference" type="xs:string"/>
@@ -93,9 +101,32 @@
 			<xs:element name="guarantor" type="goodsreleasetypes:TraderType" minOccurs="0"/>
 			<xs:element name="payer" type="goodsreleasetypes:TraderType" minOccurs="0"/>
 			<xs:element name="shipFrom" type="xs:string"/>
+			<xs:element name="shipTo" type="xs:string"/>
 			<xs:element name="borderTranspMode" type="xs:string"/>
 			<xs:element name="domesticTranspMode" type="xs:string"/>
-			<xs:element name="arrivalTransportIdentificationNumber" type="xs:string"/>
+			<xs:element name="arrivalTransportMeans">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="arrivalTransportIdentificationNumber" type="xs:string"/>
+						<xs:element name="typeOfIdentification">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="10"/>
+									<xs:enumeration value="11"/>
+									<xs:enumeration value="20"/>
+									<xs:enumeration value="21"/>
+									<xs:enumeration value="30"/>
+									<xs:enumeration value="31"/>
+									<xs:enumeration value="40"/>
+									<xs:enumeration value="41"/>
+									<xs:enumeration value="80"/>
+									<xs:enumeration value="81"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="incotermsCode" type="xs:string"/>
 			<xs:element name="incotermsCountry" type="xs:string"/>
 			<xs:element name="incotermsPlace" type="xs:string"/>
@@ -126,7 +157,7 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="transportEquipments">
+			<xs:element name="transportEquipments" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="transportEquipment" type="goodsreleasetypes:TransportEquipment" minOccurs="1" maxOccurs="unbounded"/>
