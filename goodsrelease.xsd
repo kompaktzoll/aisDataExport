@@ -94,12 +94,54 @@
 			<xs:element name="customsRegistrationNumber" type="xs:string"/>
 			<xs:element name="paymentReferenceNumber" type="xs:string"/>
 			<xs:element name="internalReference" type="xs:string"/>
-			<xs:element name="exporter" type="goodsreleasetypes:TraderType"/>
-			<xs:element name="importer" type="goodsreleasetypes:TraderType"/>
-			<xs:element name="declarant" type="goodsreleasetypes:TraderType"/>
-			<xs:element name="representative" type="goodsreleasetypes:TraderType"/>
-			<xs:element name="guarantor" type="goodsreleasetypes:TraderType" minOccurs="0"/>
-			<xs:element name="payer" type="goodsreleasetypes:TraderType" minOccurs="0"/>
+			<xs:element name="exporter">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="goodsreleasetypes:TraderType">
+							<xs:attribute name="docId" type="xs:int" use="required"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="importer">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="goodsreleasetypes:TraderType">
+							<xs:attribute name="docId" type="xs:int" use="required"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="declarant">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="goodsreleasetypes:TraderType">
+							<xs:attribute name="docId" type="xs:int" use="required"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="representative" minOccurs="0">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="goodsreleasetypes:TraderType">
+							<xs:sequence>
+								<xs:element name="status">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="2"/>
+											<xs:enumeration value="3"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+							<xs:attribute name="docId" type="xs:int" use="required"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="guarantor" type="goodsreleasetypes:PartyType" minOccurs="0"/>
+			<xs:element name="payer" type="goodsreleasetypes:PartyType" minOccurs="0"/>
 			<xs:element name="shipFrom" type="xs:string"/>
 			<xs:element name="shipTo" type="xs:string"/>
 			<xs:element name="borderTranspMode" type="xs:string"/>
