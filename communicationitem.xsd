@@ -75,5 +75,27 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+	
+    <xs:complexType name="AisCommunicationItemH10">
+        <xs:complexContent>
+            <xs:extension base="tns:AisCommunicationAnswerItem">
+                <xs:sequence>
+					<xs:element name="LRN" type="xs:string"/>
+					<xs:element name="customsRegistrationNumber" type="xs:string" minOccurs="0"/>
+					<xs:element name="paymentReferenceNumber" type="xs:string"/>
+					<xs:element name="dateLimitForPayment" type="xs:date"/>
+					<xs:element name="taxAmount" type="xs:int" minOccurs="0"/>
+					<xs:element name="taxAccountNum" type="xs:string" minOccurs="0"/>
+					<xs:element name="dutyAmount" type="xs:int" minOccurs="0"/>
+					<xs:element name="dutyAccountNum" type="xs:string" minOccurs="0"/>
+					<xs:element name="exciseAmount" type="xs:int" minOccurs="0"/>
+					<xs:element name="exciseAccountNum" type="xs:string" minOccurs="0"/>
+					<xs:element name="defaultInterest" type="xs:int" minOccurs="0"/>
+					<xs:element name="defaultInterestAccountNum" type="xs:string" minOccurs="0"/>
+					<xs:element name="customsdecisionDocument" type="xs:base64Binary"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>	
 
 </xs:schema>

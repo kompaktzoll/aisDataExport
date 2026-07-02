@@ -92,6 +92,12 @@
 							            type="communicationitem:AisCommunicationItem429" 
 										minOccurs="0" 
 										maxOccurs="unbounded"/>
+										
+							<xs:element name="aisCommunicationItemH10" 
+							            type="communicationitem:AisCommunicationItemH10" 
+										minOccurs="0" 
+										maxOccurs="unbounded"/>
+										
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
